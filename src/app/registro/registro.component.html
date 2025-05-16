@@ -1,1 +1,41 @@
-<p>registro works!</p>
+<div class="registro-container">
+  <h2>Crear Cuenta</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-field">
+      <label>Nombre</label>
+      <input type="text" formControlName="name" />
+      <small *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+        Nombre requerido
+      </small>
+    </div>
+
+    <div class="form-field">
+      <label>Correo electrónico</label>
+      <input type="email" formControlName="email" />
+      <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+        Correo inválido
+      </small>
+    </div>
+
+    <div class="form-field">
+      <label>Contraseña</label>
+      <input type="password" formControlName="password" />
+      <small *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+        Mínimo 6 caracteres
+      </small>
+    </div>
+
+    <div class="form-field">
+      <label>Confirmar contraseña</label>
+      <input type="password" formControlName="confirmPassword" />
+     <small *ngIf="passwordMismatchError && form.get('confirmPassword')?.touched">
+  Las contraseñas no coinciden
+</small>
+
+
+    </div>
+
+    <button type="submit">Registrarse</button>
+  </form>
+</div>
