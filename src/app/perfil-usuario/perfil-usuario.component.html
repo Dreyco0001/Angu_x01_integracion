@@ -1,1 +1,20 @@
-<p>perfil-usuario works!</p>
+<div class="perfil-container">
+  <button class="volver-btn" (click)="volver()">⟵ Volver</button>
+
+  <div class="perfil-card">
+    <img src="https://i.pravatar.cc/120?img=3" alt="Foto de perfil" class="foto-perfil" />
+
+    <h2>{{ nombre }}</h2>
+    <p class="correo">{{ correo }}</p>
+
+    <div class="direccion">
+      <strong>Dirección:</strong> {{ direccion }}
+      <button class="editar-btn" (click)="editarDireccion()">Editar</button>
+    </div>
+
+    <div class="acciones">
+      <button (click)="verListaDeseos()">💖 Lista de deseos</button>
+      <button (click)="verPedidos()">📦 Mis pedidos</button>
+    </div>
+  </div>
+</div>
