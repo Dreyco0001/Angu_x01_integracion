@@ -1,1 +1,23 @@
-<p>gestion works!</p>
+<div class="gestion-container">
+  <h1>📦 Gestión de Inventario</h1>
+
+  <div class="filtro">
+    <label for="categoria">Filtrar por categoría:</label>
+    <select id="categoria" [(ngModel)]="categoriaSeleccionada">
+      <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+    </select>
+  </div>
+
+  <div class="lista-productos">
+    <div *ngFor="let producto of productosFiltrados" class="producto-card">
+      <h3>{{ producto.nombre }}</h3>
+      <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+      <p><strong>Stock:</strong> {{ producto.stock }}</p>
+      <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+    </div>
+
+    <div *ngIf="productosFiltrados.length === 0" class="no-resultados">
+      No hay productos en esta categoría.
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+.carrito-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #b02a37;
+}
+
+.total {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.total button {
+  background-color: #6c757d;
+}
+
+.total button:hover {
+  background-color: #5a6268;
+}

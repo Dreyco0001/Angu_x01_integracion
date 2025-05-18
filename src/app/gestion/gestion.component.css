@@ -1,0 +1,51 @@
+.gestion-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.filtro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+select {
+  padding: 6px 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.lista-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.producto-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-4px);
+}
+
+.no-resultados {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+  grid-column: 1 / -1;
+}
