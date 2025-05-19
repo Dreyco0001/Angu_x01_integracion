@@ -1,1 +1,21 @@
-<p>admin works!</p>
+<div id="dashboard" class="dashboard-container">
+  <h2>📊 Panel de Administración</h2>
+
+  <section>
+    <h3>Ganancias y Pérdidas</h3>
+    <canvas baseChart
+      [data]="{ labels: ventasChartLabels, datasets: ventasChartData }"
+      [type]="ventasChartType">
+    </canvas>
+  </section>
+
+  <section>
+    <h3>Inventario por Tipo</h3>
+    <canvas baseChart
+      [data]="{ labels: productosChartLabels, datasets: productosChartData }"
+      [type]="productosChartType">
+    </canvas>
+  </section>
+
+  <button class="btn-exportar" (click)="exportarPDF()">📥 Exportar PDF</button>
+</div>
