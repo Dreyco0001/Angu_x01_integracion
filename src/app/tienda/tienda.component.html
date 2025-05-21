@@ -1,13 +1,29 @@
-<div class="tienda-container">
-  <h1>🛍️ Tienda de Hardware</h1>
+<div id="home" class="home-container">
+  <header class="menu-navegacion">
+    <nav>
+      <ul class="nav-list">
+        <li><a routerLink="/tienda">🛒 Tienda</a></li>
+        <li><a routerLink="/carrito">🧺 Carrito</a></li>
+        <li><a routerLink="/perfil-usuario">👤 Perfil</a></li>
+        <li><a routerLink="/admin">📊 Admin</a></li>
+        <li><a routerLink="/gestion">📦 Gestión</a></li>
+        <li><a routerLink="/registro">📝 Registro</a></li>
+        <li><a routerLink="/login">🔐 Login</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="productos-grid">
-    <div *ngFor="let producto of productos" class="producto-card">
-      <img [src]="producto.imagen" alt="{{ producto.nombre }}" />
-      <h3>{{ producto.nombre }}</h3>
-      <p class="descripcion">{{ producto.descripcion }}</p>
-      <p class="precio">${{ producto.precio }}</p>
-      <button (click)="comprar(producto)">Agregar al carrito</button>
+  <main class="productos">
+    <h1>🖥️ Productos en Venta</h1>
+    <div class="lista-productos">
+      <!-- Aquí irán los productos renderizados dinámicamente -->
+      <div class="producto">
+        <img src="assets/ejemplo-hardware.jpg" alt="Producto ejemplo">
+        <h2>Procesador Ryzen 5</h2>
+        <p>$150.000</p>
+        <button>Añadir al carrito</button>
+      </div>
+      <!-- Más productos -->
     </div>
-  </div>
+  </main>
 </div>
