@@ -33,6 +33,9 @@ export class CarritoComponent {
   limpiar() {
     this.carrito = [];
   }
+    volver() {
+    window.history.back();
+  }
 
   obtenerTotal(): number {
     return this.carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);

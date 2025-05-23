@@ -10,6 +10,9 @@ import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl, Validati
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent {
+    volver() {
+    window.history.back();
+  }
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {

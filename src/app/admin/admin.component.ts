@@ -13,6 +13,10 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
+     volver() {
+    window.history.back();
+  }
+
   ventasChartLabels: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril'];
   ventasChartData = [
     { label: 'Ganancias', data: [5000, 7000, 6000, 8000], backgroundColor: '#4caf50' },

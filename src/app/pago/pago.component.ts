@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './pago.component.css'
 })
 export class PagoComponent {
+    volver() {
+    window.history.back();
+  }
 
 }

@@ -1,5 +1,5 @@
 <div class="carrito-container">
-  <button routerLink="/tienda" class="btn-regresar">⬅️ Regresar</button>
+  <button class="volver-btn" (click)="volver()">⟵ Volver</button>
   <h2>🛒 Tu Carrito</h2>
 
   <div *ngIf="carrito.length === 0">

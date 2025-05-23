@@ -17,6 +17,9 @@ interface Producto {
   styleUrls: ['./gestion.component.css']
 })
 export class GestionComponent {
+    volver() {
+    window.history.back();
+  }
   categorias = ['Todos', 'CPU', 'GPU', 'RAM', 'Placa Madre', 'Almacenamiento'];
   categoriaSeleccionada = 'Todos';
 

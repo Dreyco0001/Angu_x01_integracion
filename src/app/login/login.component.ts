@@ -27,6 +27,9 @@ export class LoginComponent {
       password: ['', Validators.required]
     });
   }
+    volver() {
+    window.history.back();
+  }
 
   onLogin() {
     if (this.loginForm.valid) {

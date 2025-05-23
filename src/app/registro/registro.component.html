@@ -1,5 +1,5 @@
 <div class="registro-container">
-  <button routerLink="/tienda" class="btn-regresar">⬅️ Regresar</button>
+  <button class="volver-btn" (click)="volver()">⟵ Volver</button>
   <h2>Crear Cuenta</h2>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
