@@ -1,48 +1,80 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChartType } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts'; // IMPORTA EL DIRECTIVE, NO EL MODULE
 import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, BaseChartDirective], // IMPORTA EL DIRECTIVE
+  imports: [CommonModule],
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
-     volver() {
+  // Datos para Ganancias y Pérdidas
+  ventasMeses: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril'];
+  ganancias: number[] = [5000, 7000, 6000, 8000];
+  perdidas: number[] = [2000, 3000, 2500, 1000];
+
+  // Datos para Inventario
+  productos: string[] = ['GPU', 'CPU', 'RAM', 'SSD'];
+  stock: number[] = [20, 15, 30, 10];
+
+  // Función para volver atrás
+  volver() {
     window.history.back();
   }
 
-  ventasChartLabels: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril'];
-  ventasChartData = [
-    { label: 'Ganancias', data: [5000, 7000, 6000, 8000], backgroundColor: '#4caf50' },
-    { label: 'Pérdidas', data: [2000, 3000, 2500, 1000], backgroundColor: '#f44336' }
-  ];
-  ventasChartType: ChartType = 'bar';
-
-  productosChartLabels: string[] = ['GPU', 'CPU', 'RAM', 'SSD'];
-  productosChartData = [
-    { label: 'Stock', data: [20, 15, 30, 10], backgroundColor: ['#2196f3', '#ff9800', '#9c27b0', '#009688'] }
-  ];
-  productosChartType: ChartType = 'doughnut';
-
+  // Función para exportar PDF simple con tablas
   exportarPDF() {
-    const dashboard = document.getElementById('dashboard');
-    if (dashboard) {
-      html2canvas(dashboard).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF();
-        const imgProps = pdf.getImageProperties(imgData);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+    const doc = new jsPDF();
 
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save('reporte-ventas.pdf');
+    doc.setFontSize(18);
+    doc.text('Reporte de Ventas y Stock', 14, 20);
+
+    // Ventas y pérdidas
+    doc.setFontSize(14);
+    doc.text('Ganancias y Pérdidas por mes:', 14, 35);
+
+    const ventasData = [
+      ['Mes', 'Ganancias', 'Pérdidas'],
+      ...this.ventasMeses.map((mes, i) => [
+        mes,
+        this.ganancias[i].toString(),
+        this.perdidas[i].toString()
+      ])
+    ];
+
+    this.imprimirTabla(doc, ventasData, 14, 40);
+
+    // Inventario
+    doc.text('Inventario por Tipo:', 14, 95);
+
+    const inventarioData = [
+      ['Producto', 'Stock'],
+      ...this.productos.map((prod, i) => [
+        prod,
+        this.stock[i].toString()
+      ])
+    ];
+
+    this.imprimirTabla(doc, inventarioData, 14, 100);
+
+    doc.save('reporte-admin.pdf');
+  }
+
+  // Función auxiliar para imprimir tablas básicas
+  private imprimirTabla(doc: jsPDF, data: string[][], startX: number, startY: number) {
+    const cellWidth = 50;
+    const cellHeight = 10;
+
+    data.forEach((row, rowIndex) => {
+      row.forEach((cell, colIndex) => {
+        const x = startX + colIndex * cellWidth;
+        const y = startY + rowIndex * cellHeight;
+
+        doc.rect(x, y - cellHeight + 2, cellWidth, cellHeight); // dibuja celda
+        doc.text(cell, x + 2, y);
       });
-    }
+    });
   }
 }

@@ -1,21 +1,43 @@
 <div id="dashboard" class="dashboard-container">
   <button class="volver-btn" (click)="volver()">⟵ Volver</button>
-  <h2>📊 Panel de Administración</h2>
+  <h2>📊 Panel de Administración Simplificado</h2>
 
   <section>
     <h3>Ganancias y Pérdidas</h3>
-    <canvas baseChart
-      [data]="{ labels: ventasChartLabels, datasets: ventasChartData }"
-      [type]="ventasChartType">
-    </canvas>
+    <table class="tabla-datos">
+      <thead>
+        <tr>
+          <th>Mes</th>
+          <th>Ganancias (USD)</th>
+          <th>Pérdidas (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mes of ventasMeses; let i = index">
+          <td>{{ mes }}</td>
+          <td>{{ ganancias[i] | currency:'USD' }}</td>
+          <td>{{ perdidas[i] | currency:'USD' }}</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
   <section>
     <h3>Inventario por Tipo</h3>
-    <canvas baseChart
-      [data]="{ labels: productosChartLabels, datasets: productosChartData }"
-      [type]="productosChartType">
-    </canvas>
+    <table class="tabla-datos">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos; let i = index">
+          <td>{{ producto }}</td>
+          <td>{{ stock[i] }}</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
   <button class="btn-exportar" (click)="exportarPDF()">📥 Exportar PDF</button>
