@@ -6,6 +6,7 @@ import { AdminComponent } from './admin/admin.component';
 import { GestionComponent } from './gestion/gestion.component';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
+import { NoticiasListaComponent } from './noticias/noticias-lista.component';
 
 export const routes: Routes = [
   { path: 'tienda', component: TiendaComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'gestion', component: GestionComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'noticias', component: NoticiasListaComponent },
   { path: '', redirectTo: 'tienda', pathMatch: 'full' },  // Tienda es el nuevo home
   { path: '**', redirectTo: 'tienda' }  // Catch-all
 ];

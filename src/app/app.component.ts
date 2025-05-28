@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Router, NavigationEnd } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css'  // Aquí es "styleUrls", con s al final, no "styleUrl"
 })
 export class AppComponent {
-   title = 'anguV2';
-  isLoggedIn = false; // Aquí pon la lógica real para saber si el usuario está logueado
+  title = 'anguV2';
+  isLoggedIn = false; // lógica real para logueo pendiente
   activeRoute: string = '';
 
   constructor(private router: Router) {
-    // Para actualizar la ruta activa y que cambie la clase active en el menú
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.activeRoute = event.urlAfterRedirects;

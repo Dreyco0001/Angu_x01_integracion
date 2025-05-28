@@ -1,168 +1,178 @@
 <style>
   /* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-/* Fuente general */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f7fa;
-  color: #333;
-}
+  /* Fuente general */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    color: #333;
+  }
 
-/* Contenedor general */
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* ---------- HEADER ---------- */
-.main-header {
-  background-color: #1e1e2f;
-  padding: 1rem 2rem;
-  color: #fff;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.navbar {
-  display: flex;
-  justify-content: center;
-}
-
-.nav-menu {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  list-style: none;
-}
-
-.nav-menu li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.nav-menu li a:hover,
-.nav-menu li.active a {
-  color: #ffcb05;
-}
-
-/* ---------- MAIN ---------- */
-.main-content {
-  flex: 1;
-  padding: 2rem;
-  text-align: center;
-}
-
-.main-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: #2c3e50;
-}
-
-.main-content p {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 2rem;
-}
-
-/* ---------- FOOTER ---------- */
-.main-footer {
-  background-color: #1e1e2f;
-  color: #fff;
-  text-align: center;
-  padding: 1rem 2rem;
-}
-
-.social-icons {
-  margin: 0.5rem 0;
-}
-
-.social-icons a {
-  margin: 0 0.5rem;
-  font-size: 1.5rem;
-  transition: transform 0.2s;
-}
-
-.social-icons a:hover {
-  transform: scale(1.2);
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 768px) {
-  .nav-menu {
+  /* Contenedor general */
+  .app-container {
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    min-height: 100vh;
+  }
+
+  /* ---------- HEADER ---------- */
+  .main-header {
+    background-color: #1e1e2f;
+    padding: 1rem 2rem;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .nav-menu li {
+    list-style: none;
+  }
+
+  .nav-button {
+    background-color: #2d2d44;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 1rem;
+  }
+
+  .nav-button:hover {
+    background-color: #3f3f5a;
+    transform: scale(1.05);
+  }
+
+  .nav-menu li.active .nav-button {
+    background-color: #ffcb05;
+    color: #1e1e2f;
+  }
+
+  /* ---------- MAIN ---------- */
+  .main-content {
+    flex: 1;
+    padding: 2rem;
+    text-align: center;
   }
 
   .main-content h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
   }
 
   .main-content p {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
   }
-}
 
+  /* ---------- FOOTER ---------- */
+  .main-footer {
+    background-color: #1e1e2f;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 2rem;
+  }
+
+  .social-icons {
+    margin: 0.5rem 0;
+  }
+
+  .social-icons a {
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    transition: transform 0.2s;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.2);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 768px) {
+    .nav-menu {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .main-content h1 {
+      font-size: 2rem;
+    }
+
+    .main-content p {
+      font-size: 1rem;
+    }
+  }
 </style>
 
 <main class="main">
   <div class="app-container">
-  <header class="main-header">
-    <nav class="navbar">
+    <header class="main-header">
+      <nav class="navbar">
         <ul class="nav-menu">
-        <li [class.active]="activeRoute === '/tienda'">
-          <button (click)="navigateTo('/tienda')">🛒 Tienda</button>
-        </li>
-        <li [class.active]="activeRoute === '/carrito'">
-          <button (click)="navigateTo('/carrito')">🧺 Carrito</button>
-        </li>
-        <li [class.active]="activeRoute === '/perfil-usuario'">
-          <button (click)="navigateTo('/perfil-usuario')">👤 Perfil</button>
-        </li>
-        <li [class.active]="activeRoute === '/admin'">
-          <button (click)="navigateTo('/admin')">📊 Admin</button>
-        </li>
-        <li [class.active]="activeRoute === '/gestion'">
-          <button (click)="navigateTo('/gestion')">📦 Gestión</button>
-        </li>
+          <li [class.active]="activeRoute === '/tienda'">
+            <button class="nav-button" (click)="navigateTo('/tienda')">🛒 Tienda</button>
+          </li>
+          <li [class.active]="activeRoute === '/carrito'">
+            <button class="nav-button" (click)="navigateTo('/carrito')">🧺 Carrito</button>
+          </li>
+          <li [class.active]="activeRoute === '/perfil-usuario'">
+            <button class="nav-button" (click)="navigateTo('/perfil-usuario')">👤 Perfil</button>
+          </li>
+           <li [class.active]="activeRoute === '/noticias'">
+            <button class="nav-button" (click)="navigateTo('/noticias')">📰 quiz juegos</button>
+          </li>
+          <li [class.active]="activeRoute === '/admin'">
+            <button class="nav-button" (click)="navigateTo('/admin')">📊 Admin</button>
+          </li>
+          <li [class.active]="activeRoute === '/gestion'">
+            <button class="nav-button" (click)="navigateTo('/gestion')">📦 Gestión</button>
+          </li>
+          <li [class.active]="activeRoute === '/registro'">
+            <button class="nav-button" (click)="navigateTo('/registro')">📝 Registro</button>
+          </li>
+          <li [class.active]="activeRoute === '/login'">
+            <button class="nav-button" (click)="navigateTo('/login')">🔐 Login</button>
+          </li>
+          <li [class.active]="activeRoute === '/logout'">
+            <button class="nav-button" (click)="navigateTo('/logout')">🚪 Logout</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-        <!-- Mostrar según autenticación -->
-        <li ngIf="!isLoggedIn" [class.active]="activeRoute === '/registro'">
-          <button (click)="navigateTo('/registro')">📝 Registro</button>
-        </li>
-        <li ngIf="!isLoggedIn" [class.active]="activeRoute === '/login'">
-          <button (click)="navigateTo('/login')">🔐 Login</button>
-        </li>
-        <li ngIf="isLoggedIn" [class.active]="activeRoute === '/logout'">
-          <button (click)="navigateTo('/logout')">🚪 Logout</button>
-        </li>
-      </ul>
-    </nav>
-  </header>
+    <main class="main-content">
+      <!-- <app-productos-destacados></app-productos-destacados> -->
+      <router-outlet></router-outlet>
+    </main>
 
-  <main class="main-content">
-    <h1>Bienvenido a la tienda de Hardware 💻🖱️</h1>
-    <p>Explora nuestros productos abajo 👇</p>
-    <!-- <app-productos-destacados></app-productos-destacados> -->
-    <router-outlet></router-outlet>
-  </main>
-
-  <footer class="main-footer">
-    <p>Síguenos en redes:</p>
-    <div class="social-icons">
-      <a href="#" aria-label="Facebook">📘</a>
-      <a href="#" aria-label="Twitter">🐦</a>
-      <a href="#" aria-label="Instagram">📸</a>
-    </div>
-    <p>&copy; 2025 Mi tienda de Hardware. Todos los derechos reservados.</p>
-  </footer>
-</div>
-
+    <footer class="main-footer">
+      <p>Síguenos en redes:</p>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook">📘</a>
+        <a href="#" aria-label="Twitter">🐦</a>
+        <a href="#" aria-label="Instagram">📸</a>
+      </div>
+      <p>&copy; 2025 Mi tienda de Hardware. Todos los derechos reservados.</p>
+    </footer>
+  </div>
 </main>
-

@@ -1,0 +1,21 @@
+<div class="quiz-container">
+  <h2>🎮 Quiz de Juegos</h2>
+
+  <div *ngIf="loading">Cargando preguntas...</div>
+
+  <div *ngIf="!loading && !finished">
+    <p><b>Pregunta {{ currentIndex + 1 }} de {{ questions.length }}:</b></p>
+    <p [innerHTML]="questions[currentIndex].question_es"></p>
+
+    <div *ngFor="let ans of questions[currentIndex].answers_es">
+      <button (click)="answer(ans)" class="answer-button" [disabled]="answered">
+        <span [innerHTML]="ans"></span>
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="finished">
+    <h3>Resultado: {{ score }} / {{ questions.length }}</h3>
+    <button (click)="restart()">Volver a jugar</button>
+  </div>
+</div>

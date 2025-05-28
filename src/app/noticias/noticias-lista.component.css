@@ -1,0 +1,90 @@
+.noticias-container {
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Contenedor de cada pregunta y respuestas */
+.noticias-container p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Botones de respuestas */
+.answer-button {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 2px solid #007BFF;
+  background-color: white;
+  color: #007BFF;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.answer-button:hover:not(:disabled) {
+  background-color: #e6f0ff;
+}
+
+.answer-button:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+/* Respuesta correcta */
+.answer-button.correct {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+/* Respuesta incorrecta */
+.answer-button.wrong {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+/* Mensaje de carga y error */
+.error-message {
+  color: #dc3545;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Resultado final */
+h3 {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+button {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
