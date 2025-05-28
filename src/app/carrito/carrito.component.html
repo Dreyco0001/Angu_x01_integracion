@@ -10,13 +10,16 @@
     <div class="info">
       <strong>{{ producto.nombre }}</strong>
       <span>Cantidad: {{ producto.cantidad }}</span>
-      <span>Precio: ${{ producto.precio }}</span>
+      <span>Precio: {{ monedaSimbolo }}{{ producto.precio }}</span>
     </div>
     <button (click)="eliminar(producto)">❌ Quitar</button>
   </div>
 
   <div class="total" *ngIf="carrito.length > 0">
-    <p><strong>Total:</strong> ${{ obtenerTotal() }}</p>
+    <p><strong>Total:</strong> {{ monedaSimbolo }}{{ obtenerTotal() }}</p>
     <button (click)="limpiar()">🗑️ Vaciar carrito</button>
+    
+    <!-- Botón de pago -->
+    <button (click)="pagar()" class="pagar-btn">💳 Pagar</button>
   </div>
 </div>

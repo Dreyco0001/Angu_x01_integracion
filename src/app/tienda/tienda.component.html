@@ -1,15 +1,37 @@
 <div id="home" class="home-container">
   <main class="productos">
     <h1>🖥️ Productos en Venta</h1>
+
+    <div class="filtros">
+      <label>Filtrar por categoría:</label>
+      <select #selectorCategoria (change)="cambiarFiltro(selectorCategoria.value)">
+        <option value="todos">Todos</option>
+        <option value="alto">Alto rendimiento</option>
+        <option value="medio">Gama media</option>
+      </select>
+
+     <label>Cambiar moneda:</label>
+<select #selectorMon (change)="cambiarMoneda(selectorMon.value)">
+  <option *ngFor="let moneda of monedasDisponibles" [value]="moneda">{{ moneda }}</option>
+</select>
+
+    </div>
+
     <div class="lista-productos">
-      <!-- Aquí irán los productos renderizados dinámicamente -->
-      <div class="producto">
-        <img src="assets/ejemplo-hardware.jpg" alt="Producto ejemplo">
-        <h2>Procesador Ryzen 5</h2>
-        <p>$150.000</p>
-        <button>Añadir al carrito</button>
-      </div>
-      <!-- Más productos -->
+    <div class="producto" *ngFor="let producto of productosFiltrados">
+  <div class="icono">{{ producto.imagen }}</div>
+  <h3>{{ producto.nombre }}</h3>
+  <p>{{ producto.descripcion }}</p>
+  <p><strong>Precio:</strong> {{ monedaSimbolo }}{{ producto.precio }}</p>
+
+  <!-- Botón para agregar al carrito -->
+  <button (click)="agregarAlCarrito(producto)">🛒 Agregar al carrito</button>
+
+  <!-- Opcional: Botón para comprar directamente -->
+  <button (click)="comprar(producto)">💳 Comprar</button>
+</div>
+
+
     </div>
   </main>
 </div>

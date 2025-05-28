@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   imports: [CommonModule],
   template: `
     <div class="noticias-container">
-      <h2>🎮 Quiz de Juegos (Preguntas en Español)</h2>
+      <h2>🎮 Quiz de Juegos</h2>
 
       <div *ngIf="loading">Cargando preguntas...</div>
 
